@@ -1,0 +1,6 @@
+.elements__rectangle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 79px;
+}

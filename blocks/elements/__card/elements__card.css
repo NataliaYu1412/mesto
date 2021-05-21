@@ -1,0 +1,16 @@
+.elements__card {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin: 0 0 20px 0;
+    max-height: 361px;
+}
+
+.elements__card:last-child {
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) { 
+    .elements__card { 
+        margin: 0;
+    } 
+}

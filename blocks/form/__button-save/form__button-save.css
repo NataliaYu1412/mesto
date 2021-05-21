@@ -1,0 +1,23 @@
+.form__button-save {
+    background-image: url(../../../images/Close-Icon.svg);
+    min-height: 46px;
+    width: 238px;
+    background-size: cover;
+    border-style: none;
+    color: #FFFFFF;
+    background-color: #000000;
+    border-radius: 2px;
+    transition: opacity 0.6s;
+    margin-top: 45px;
+}
+
+.form__button-save:hover {
+    opacity: 0.8;
+}
+
+@media screen and (min-width: 460px) { 
+    .form__button-save {
+        min-height: 50px;
+        width: 358px;
+    }
+}

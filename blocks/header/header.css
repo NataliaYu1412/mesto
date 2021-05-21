@@ -1,0 +1,25 @@
+.header { 
+    font-family: "Inter", Arial, sans-serif;  
+    margin: 28px 0 36px 0;
+    min-height: 56px;
+    border-bottom: 1px solid #545454;
+} 
+ 
+@media screen and (min-width: 768px) { 
+    .header { 
+       margin: 38px 100px 36px 100px;
+       min-height: 74px;  
+    } 
+} 
+ 
+@media screen and (min-width: 1024px) { 
+    .header { 
+       margin: 45px 72px 36px 72px;  
+    } 
+} 
+
+@media screen and (min-width: 1280px) { 
+    .header { 
+       margin: 45px 200px 36px 200px;  
+    } 
+} 
