@@ -7,8 +7,8 @@
 @media screen and (min-width: 768px) { 
     .elements{ 
         max-width: 584px;
-        display: grid; 
-        grid-template-columns: repeat(2, 1fr); 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
         gap: 20px;
     } 
@@ -17,8 +17,8 @@
 @media screen and (min-width: 1024px) { 
     .elements{ 
         max-width: 880px;
-        display: grid; 
-        grid-template-columns: repeat(3, 1fr); 
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
         row-gap: 20px;
         column-gap: 17px;
