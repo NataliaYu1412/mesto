@@ -12,4 +12,4 @@
  
 **Github** 
  
-* [Ссылка проекта на Github](https://nataliayu1412.github.io/russian-travel/index.html) 
+* [Ссылка проекта на Github](https://nataliayu1412.github.io/mesto/)
