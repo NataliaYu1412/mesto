@@ -4,17 +4,25 @@
     font-weight: normal;
     color: #FFFFFF;
     margin: 14px 0 0 51px;
+    max-width: 250px;
 }
 
 @media screen and (min-width: 460px) { 
     .profile__role { 
         margin: 16px 0 0 0;
+        max-width: 200px;
     } 
 }
 
 @media screen and (min-width: 768px) { 
     .profile__role {
         font-size: 18px;
-        line-height: 1.2;
+        max-width: 320px;
+    } 
+}
+
+@media screen and (min-width: 1024px) { 
+    .profile__role {
+        max-width: 500px;
     } 
 }

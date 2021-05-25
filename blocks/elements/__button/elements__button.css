@@ -6,8 +6,9 @@
     height: 19px;
     background-image: url(../../../images/Like.svg);
     transition: opacity 0.6s;
+    cursor: pointer
 }
 
 .elements__button:hover {
-    opacity: 0.6;
+    opacity: 0.5;
 }

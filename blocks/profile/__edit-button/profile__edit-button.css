@@ -7,6 +7,7 @@
     height: 18px;
     margin-top: 8px;
     transition: opacity 0.6s;
+    cursor: pointer;
 }
 
 .profile__edit-button:hover {
@@ -22,11 +23,8 @@
 @media screen and (min-width: 1024px) { 
     .profile__edit-button {
         margin-top: 15px;
-    } 
-}
-
-@media screen and (min-width: 1280px) { 
-    .profile__edit-button {
-        margin-top: 15px;
+        background-image: url(../../../images/profile-edit-1280.svg);
+        width: 24px;
+        height: 24px;
     } 
 }
