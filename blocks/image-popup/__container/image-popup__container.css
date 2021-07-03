@@ -1,7 +1,5 @@
 .image-popup__container {
     position: relative;
     margin: auto;
-    max-width: 240px;
-    display: flex;
     flex-direction: column;
 }

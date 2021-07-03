@@ -1,3 +1,5 @@
 .popup-opened {
+    pointer-events: auto;
     display: flex;
+    opacity: 1;
 }
