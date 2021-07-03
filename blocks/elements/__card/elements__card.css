@@ -2,6 +2,7 @@
     background-color: #FFFFFF;
     border-radius: 10px;
     margin: 0 0 20px 0;
+    position: relative;
 }
 
 .elements__card:last-child {

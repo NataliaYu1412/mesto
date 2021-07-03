@@ -25,48 +25,16 @@
                 <button type='button' aria-label='Добавить' class='profile__add-button'></button>
             </section>
             <section class='elements'>
-                <div class='elements__card'>
-                    <img src='./images/RekaVolga.jpg' class='elements__photo' alt='Река Волга'>
-                    <div class='elements__rectangle'>
-                        <h2 class='elements__title'>Река Волга</h2>
-                        <button type='button' aria-label='Лайк' class='elements__button'></button>
+                <template class='elements-template'>
+                    <div class='elements__card'>
+                        <img src='./images/Elbrus.jpg' class='elements__photo' alt='Гора Эльбрус'>
+                        <button type='button' aria-label='Удалить' class='elements__delete'></button>
+                        <div class='elements__rectangle'>
+                            <h2 class='elements__title'>Гора Эльбрус</h2>
+                            <button type='button' aria-label='Лайк' class='elements__button'></button>
+                        </div>
                     </div>
-                </div>
-                <div class='elements__card'>
-                    <img src='./images/Elbrus.jpg' class='elements__photo' alt='Гора Эльбрус'>
-                    <div class='elements__rectangle'>
-                        <h2 class='elements__title'>Гора Эльбрус</h2>
-                        <button type='button' aria-label='Лайк' class='elements__button'></button>
-                    </div>
-                </div>
-                <div class='elements__card'>
-                    <img src='./images/KrasnayaPolyana.jpg' class='elements__photo' alt='Красная Поляна'>
-                    <div class='elements__rectangle'>
-                        <h2 class='elements__title'>Красная Поляна</h2>
-                        <button type='button' aria-label='Лайк' class='elements__button'></button>
-                    </div>
-                </div>
-                <div class='elements__card'>
-                    <img src='./images/SulakskyKanyon.jpg' class='elements__photo' alt='Сулакский каньон'>
-                    <div class='elements__rectangle'>
-                        <h2 class='elements__title'>Сулакский каньон</h2>
-                        <button type='button' aria-label='Лайк' class='elements__button'></button>
-                    </div>
-                </div>
-                <div class='elements__card'>
-                    <img src='./images/Saint-Petersburg.jpg' class='elements__photo' alt='Санкт-Петербург'>
-                    <div class='elements__rectangle'>
-                        <h2 class='elements__title'>Санкт-Петербург</h2>
-                        <button type='button' aria-label='Лайк' class='elements__button'></button>
-                    </div>
-                </div>
-                <div class='elements__card'>
-                    <img src='./images/Moscow.jpg' class='elements__photo' alt='Москва'>
-                    <div class='elements__rectangle'>
-                        <h2 class='elements__title'>Москва</h2>
-                        <button type='button' aria-label='Лайк' class='elements__button'></button>
-                    </div>
-                </div>
+                </template>
             </section>
         </main>
         <footer class='footer'>
@@ -83,6 +51,23 @@
                 </form>
             </div>
         </section>
-        <script src='/scripts/script.js'></script>
+        <section class='add-popup'>
+            <div class='add-popup__container'> 
+                <button type='button' class='add-popup__button-close' aria-label='Закрыть' title='Закрыть'></button>
+                <form action='#' name='addForm' class='add-form'>
+                    <h2 class='add-form__title'>Новое место</h2>
+                    <input type='text' name='addFormName' class='add-form__info' id='add-popup__name' placeholder='Название'>
+                    <input type='text' name='addFormLink' class='add-form__info' placeholder='Ссылка на картинку' id='add-popup__link'>
+                    <button type='submit' class='add-form__button-create'>Создать</button>
+                </form>
+            </div>
+        </section>
+        <section class='image-popup'>
+            <div class='image-popup__container'>
+                <button type='button' class='image-popup__button-close' aria-label='Закрыть' title='Закрыть'></button>
+                <img src='./images/Elbrus.jpg' class='image-popup__photo' alt='Гора Эльбрус'>
+                <div class='image-popup__text'>Гора Эльбрус</div>
+        </section>
+        <script src='./scripts/script.js'></script>
     </body>
 </html>

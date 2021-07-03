@@ -1,0 +1,29 @@
+.add-form__button-create {
+    background-image: url(../../../images/Rectangle\ \(1\).svg);
+    min-height: 46px;
+    width: 238px;
+    background-size: cover;
+    border-style: none;
+    color: #FFFFFF;
+    background-color: #000000;
+    border-radius: 2px;
+    transition: opacity 0.6s;
+    margin-top: 45px;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.add-form__button-create:hover {
+    opacity: 0.8;
+}
+
+@media screen and (min-width: 768px) { 
+    .add-form__button-create {
+        min-height: 50px;
+        width: 358px;
+        font-size: 18px;
+        margin-top: 48px;
+    }
+}

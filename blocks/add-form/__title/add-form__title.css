@@ -1,0 +1,16 @@
+.add-form__title {
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 25px auto 75px auto;
+    font-weight: 900;
+}
+
+@media screen and (min-width: 768px) { 
+    .add-form__title {
+        margin-bottom: 54px;
+        font-size: 24px;
+        width: 330px;
+        margin-left: 36px;
+        margin-top: 34px;
+    } 
+}
