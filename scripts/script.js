@@ -10,6 +10,7 @@ const editPopupName = document.getElementById('edit-popup__name');
 const profileStatus = document.querySelector('.profile__role');
 const editPopupStatus = document.getElementById('edit-popup__status');
 
+
 /* Общие функции для открытия и закрытия попапов */
 
 function openPopup(popup) {
@@ -99,22 +100,6 @@ initialCards.forEach(function (element) {
   
 })
 
-/* Открывание и закрывания попапа добавления карточки */
-
-const addPopup = document.querySelector('.popup_type_new-card');
-const profileAddButton = document.querySelector('.profile__add-button');
-const addPopupButtonClose = document.querySelector('.popup__button-close_type_new-card');
-
-function openAddPopup () {
-  openPopup(addPopup);
-}
-
-function closeAddPopup () {
-  closePopup(addPopup);
-}
-
-profileAddButton.addEventListener('click', openAddPopup);
-addPopupButtonClose.addEventListener('click', closeAddPopup);
 
 /* Реализация добавления карточки */
 
@@ -135,6 +120,25 @@ function saveAddPopupChanges (submit) {
   closeAddPopup();
 
 }
+
+/* Открывание и закрывания попапа добавления карточки */
+
+const addPopup = document.querySelector('.popup_type_new-card');
+const profileAddButton = document.querySelector('.profile__add-button');
+const addPopupButtonClose = document.querySelector('.popup__button-close_type_new-card');
+const addForm = document.querySelector('.form_type_new-card');
+
+function openAddPopup () {
+  openPopup(addPopup);
+  addForm.reset();
+}
+
+function closeAddPopup () {
+  closePopup(addPopup);
+}
+
+profileAddButton.addEventListener('click', openAddPopup);
+addPopupButtonClose.addEventListener('click', closeAddPopup);
 
 saveAddPopup.addEventListener('submit', saveAddPopupChanges);
 
@@ -164,8 +168,9 @@ function openCardImage(event) {
   
   openPopup(imagePopup);
   
-  imagePopup.querySelector('.popup__image').src = link;
   imagePopup.querySelector('.popup__text').textContent = name;
+  imagePopup.querySelector('.popup__image').src = link;
+  imagePopup.querySelector('.popup__image').alt = name;
 }
 
 function closeCardImage () {
