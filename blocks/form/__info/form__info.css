@@ -1,6 +1,5 @@
 .form__info {
     font-size: 14px;
-    margin: 0 auto 30px auto;
     min-height: 27px;
     width: 238px;
     border-style: none;
@@ -8,9 +7,6 @@
     vertical-align: top;
 }
 
-.form__info:last-of-type {
-    margin-bottom: 0;
-}
 
 @media screen and (min-width: 768px) { 
     .form__info {

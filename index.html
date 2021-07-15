@@ -19,8 +19,8 @@
                             <h1 class='profile__name'>Жак-Ив Кусто</h1>
                             <p class='profile__role'>Исследователь океана</p>
                         </div>
+                    </div>    
                     <button type='button' aria-label='Изменить' class='profile__edit-button'></button>
-                </div>
                 </div>
                 <button type='button' aria-label='Добавить' class='profile__add-button'></button>
             </section>
@@ -43,10 +43,16 @@
         <section class='popup popup_type_edit-profile'>
             <div class='popup__container'> 
                 <button type='button' class='popup__button-close popup__button-close_type_edit-profile' aria-label='Закрыть' title='Закрыть'></button>
-                <form action='#' name='form' class='form form_type_edit-profile'>
+                <form action='#' name='form' class='form form_type_edit-profile' novalidate>
                     <h2 class='form__title form__title_type_edit-profile'>Редактировать профиль</h2>
-                    <input type='text' name='editFormName' class='form__info form__info_type_edit-profile' id='edit-popup__name' placeholder='Как Вас зовут?'>
-                    <input type='text' name='editFormLink' class='form__info form__info_type_edit-profile' placeholder='Расскажите о себе' id='edit-popup__status'>
+                    <div class='form__section'>
+                        <input type='text' name='editFormName' class='form__info form__info_type_edit-profile' id='edit-popup__name' placeholder='Как Вас зовут?' required minlength='2' maxlength='40'>
+                        <span class='form__input-error edit-popup__name-error'></span>
+                    </div>
+                    <div class='form__section'>
+                        <input type='text' name='editFormLink' class='form__info form__info_type_edit-profile' placeholder='Расскажите о себе' id='edit-popup__status' required minlength='2' minlength='200'>
+                        <span class='form__input-error edit-popup__status-error'></span>
+                    </div>
                     <button type='submit' class='form__button-save form__button-save_type_edit-profile'>Сохранить</button>
                 </form>
             </div>
@@ -54,11 +60,17 @@
         <section class='popup popup_type_new-card'>
             <div class='popup__container'> 
                 <button type='button' class='popup__button-close popup__button-close_type_new-card' aria-label='Закрыть' title='Закрыть'></button>
-                <form action='#' name='form' class='form form_type_new-card'>
+                <form action='#' name='form' class='form form_type_new-card' novalidate>
                     <h2 class='form__title form__title_type_new-card'>Новое место</h2>
-                    <input type='text' name='addFormName' class='form__info form__info_type_new-card' id='add-popup__name' placeholder='Название'>
-                    <input type='text' name='addFormLink' class='form__info form__info_type_new-card' placeholder='Ссылка на картинку' id='add-popup__link'>
-                    <button type='submit' class='form__button-save form__button-save_type_new-card'>Создать</button>
+                    <div class='form__section'>
+                        <input type='text' name='addFormName' class='form__info form__info_type_new-card' id='add-popup__name' placeholder='Название' required minlength='2' maxlength='30'>
+                        <span class='form__input-error add-popup__name-error'></span>
+                    </div> 
+                    <div class='form__section'>  
+                        <input type='url' name='addFormLink' class='form__info form__info_type_new-card' placeholder='Ссылка на картинку' id='add-popup__link' required>
+                        <span class='form__input-error add-popup__link-error'></span>
+                    </div>
+                    <button type='submit' class='form__button-save form__button-save_type_new-card'>Создать</button> 
                 </form>
             </div>
         </section>
@@ -70,5 +82,6 @@
             </div>
         </section>
         <script src='./scripts/script.js'></script>
+        <script src='./scripts/validate.js'></script>
     </body>
 </html>

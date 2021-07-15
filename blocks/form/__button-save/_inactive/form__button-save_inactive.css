@@ -1,0 +1,11 @@
+.form__button-save_inactive {
+    color: #B8B8B8;
+    background: white;
+    pointer-events: none;
+    border: 2px solid #B8B8B8;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
