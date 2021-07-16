@@ -6,9 +6,9 @@ const closePopupEditButton= document.querySelector('.popup__button-close_type_ed
 const editForm = document.querySelector('.form_type_edit-profile');
 
 const profileName = document.querySelector('.profile__name');
-const editPopupName = document.getElementById('edit-popup__name');
+const editPopupName = document.getElementById('edit-popup-name');
 const profileStatus = document.querySelector('.profile__role');
-const editPopupStatus = document.getElementById('edit-popup__status');
+const editPopupStatus = document.getElementById('edit-popup-status');
 
 
 /* Общие функции для открытия и закрытия попапов */
@@ -104,8 +104,8 @@ initialCards.forEach(function (element) {
 /* Реализация добавления карточки */
 
 const saveAddPopup = document.querySelector('.form_type_new-card');
-const addPopupName = document.getElementById('add-popup__name');
-const addPopupLink = document.getElementById('add-popup__link');
+const addPopupName = document.getElementById('add-popup-name');
+const addPopupLink = document.getElementById('add-popup-link');
 
 function saveAddPopupChanges (submit) {
   submit.preventDefault();
