@@ -4,17 +4,18 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(errorClass);
-    inputElement.classList.add(inputErrorClass);
+    errorElement.classList.add('form__input-error_active');
+    inputElement.classList.add('form__info_type_error');
   };
   
   const hideInputError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   
     errorElement.textContent = '';
-    errorElement.classList.remove(errorClass);
-    inputElement.classList.remove(inputErrorClass);
+    errorElement.classList.remove('form__input-error_active');
+    inputElement.classList.remove('form__info_type_error');
   };
+  
   
   const checkInputValidity = (formElement, inputElement) => {
     const isInputNotValid = !inputElement.validity.valid;
@@ -30,6 +31,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   
   };
   
+  
   const toggleButtonState = (inputList, buttonElement) => {
     const hasNotValidInput = inputList.some(
       inputElement => !inputElement.validity.valid
@@ -37,14 +39,15 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   
       if (hasNotValidInput) {
         buttonElement.setAttribute('disabled', true);
-        buttonElement.classList.add(inactiveButtonClass);
+        buttonElement.classList.add('form__button-save_inactive');
       } else {
         buttonElement.removeAttribute('disabled');
-        buttonElement.classList.remove(inactiveButtonClass);
+        buttonElement.classList.remove('form__button-save_inactive');
       }
   }
   
-  const setEventListeners = (formElement) => {
+  
+  const setEventListeners = (formElement, inputSelector, buttonSelector) => {
     formElement.addEventListener('submit', (event) => {
       event.preventDefault();
     });
@@ -63,19 +66,16 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   };
   
   
-  const enableValidation = ({formSelector, inputSelector, buttonSelector, inactiveButtonClass, inputErrorClass, errorClass}) => {
+  const enableValidation = ({formSelector, inputSelector, buttonSelector}) => {
     const formList = Array.from(document.querySelectorAll(formSelector));
   
     formList.forEach((formElement) => {
-      setEventListeners (formElement, inputSelector, buttonSelector, inactiveButtonClass, inputErrorClass, errorClass);
+      setEventListeners (formElement, inputSelector, buttonSelector);
     })
   };  
   
   enableValidation({
-    formSelector:'.form',
-    inputSelector:'.form__info',
-    buttonSelector:'.form__button-save',
-    inactiveButtonClass:'form__button-save_inactive',
-    inputErrorClass:'form__info_type_error',
-    errorClass:'form__input-error_active'
+    formSelector: '.form',
+    inputSelector: '.form__info',
+    buttonSelector: '.form__button-save',
   });
