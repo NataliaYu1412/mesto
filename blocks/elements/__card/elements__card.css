@@ -3,6 +3,8 @@
     border-radius: 10px;
     margin: 0 0 20px 0;
     position: relative;
+    width: 282px;
+    height: 364.5px;
 }
 
 .elements__card:last-child {

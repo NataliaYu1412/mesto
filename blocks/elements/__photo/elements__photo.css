@@ -1,5 +1,13 @@
 .elements__photo {
     border-radius: 10px 10px 0px 0px;
+    min-width: 282px;
+    min-height: 282px;
     width: 282px;
     height: 282px;
+    transition: opacity 0.6s;
+    cursor: pointer;
+}
+
+.elements__photo:hover {
+    opacity: 0.5;
 }

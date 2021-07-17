@@ -1,4 +1,4 @@
-/*Валидация форм*/
+/* Валидация форм */
 
 const showInputError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -27,8 +27,6 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     } else {
       hideInputError(formElement, inputElement)
     }
-  
-  
   };
   
   
@@ -44,7 +42,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
         buttonElement.removeAttribute('disabled');
         buttonElement.classList.remove('form__button-save_inactive');
       }
-  }
+  };
   
   
   const setEventListeners = (formElement, inputSelector, buttonSelector) => {
@@ -79,3 +77,12 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     inputSelector: '.form__info',
     buttonSelector: '.form__button-save',
   });
+
+  const config = {
+    formSelector: '.form',
+    inputSelector: '.form__info',
+    buttonSelector: '.form__button-save',
+    inactiveButtonClass: 'form__button-save_inactive',
+    inputErrorClass: 'form__info_type_error',
+    errorClass: 'form__input-error_active'
+  };
