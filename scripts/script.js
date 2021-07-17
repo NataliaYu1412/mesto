@@ -61,6 +61,11 @@ function openEditPopup () {
   editPopupStatus.value = profileStatus.textContent;
 
   openPopup(editPopup);
+
+  const inputList = Array.from(document.querySelectorAll('.form__info'))
+  const buttonElement = document.querySelector('.form__button-save_type_edit-profile')
+  
+  toggleButtonState(inputList, buttonElement, config);
 };
 
 function closeEditPopup () {
@@ -143,7 +148,7 @@ function openAddPopup () {
   const inputList = Array.from(document.querySelectorAll('.form__info'))
   const buttonElement = document.querySelector('.form__button-save_type_new-card')
   
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, config);
 
 };
 

@@ -1,88 +1,84 @@
 /* Валидация форм */
 
-const showInputError = (formElement, inputElement, errorMessage) => {
+const config = {
+  formSelector: '.form',
+  inputSelector: '.form__info',
+  buttonSelector: '.form__button-save',
+  inactiveButtonClass: 'form__button-save_inactive',
+  inputErrorClass: 'form__info_type_error',
+  errorClass: 'form__input-error_active'
+};
+
+const showInputError = (formElement, inputElement, errorMessage, config) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   
     errorElement.textContent = errorMessage;
-    errorElement.classList.add('form__input-error_active');
-    inputElement.classList.add('form__info_type_error');
+    errorElement.classList.add(config.errorClass);
+    inputElement.classList.add(config.inputErrorClass);
   };
   
-  const hideInputError = (formElement, inputElement) => {
+  const hideInputError = (formElement, inputElement, config) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   
     errorElement.textContent = '';
-    errorElement.classList.remove('form__input-error_active');
-    inputElement.classList.remove('form__info_type_error');
+    errorElement.classList.remove(config.errorClass);
+    inputElement.classList.remove(config.inputErrorClass);
   };
   
   
-  const checkInputValidity = (formElement, inputElement) => {
+  const checkInputValidity = (formElement, inputElement, config) => {
     const isInputNotValid = !inputElement.validity.valid;
   
     if (isInputNotValid) {
       const errorMessage = inputElement.validationMessage;
   
-      showInputError(formElement, inputElement, errorMessage)
+      showInputError(formElement, inputElement, errorMessage, config)
     } else {
-      hideInputError(formElement, inputElement)
+      hideInputError(formElement, inputElement, config)
     }
   };
   
   
-  const toggleButtonState = (inputList, buttonElement) => {
+  const toggleButtonState = (inputList, buttonElement, config) => {
     const hasNotValidInput = inputList.some(
       inputElement => !inputElement.validity.valid
       );
   
       if (hasNotValidInput) {
         buttonElement.setAttribute('disabled', true);
-        buttonElement.classList.add('form__button-save_inactive');
+        buttonElement.classList.add(config.inactiveButtonClass);
       } else {
         buttonElement.removeAttribute('disabled');
-        buttonElement.classList.remove('form__button-save_inactive');
+        buttonElement.classList.remove(config.inactiveButtonClass);
       }
   };
   
   
-  const setEventListeners = (formElement, inputSelector, buttonSelector) => {
+  const setEventListeners = (formElement, config) => {
     formElement.addEventListener('submit', (event) => {
       event.preventDefault();
     });
   
-    const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-    const buttonElement = formElement.querySelector(buttonSelector);
+    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+    const buttonElement = formElement.querySelector(config.buttonSelector);
   
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', (event) => {
-        checkInputValidity(formElement, inputElement);
-        toggleButtonState(inputList, buttonElement);
+        checkInputValidity(formElement, inputElement, config);
+        toggleButtonState(inputList, buttonElement, config);
       })
     })
   
-   toggleButtonState(inputList, buttonElement);
+   toggleButtonState(inputList, buttonElement, config);
   };
   
   
-  const enableValidation = ({formSelector, inputSelector, buttonSelector}) => {
-    const formList = Array.from(document.querySelectorAll(formSelector));
+  const enableValidation = (config) => {
+    const formList = Array.from(document.querySelectorAll(config.formSelector));
   
     formList.forEach((formElement) => {
-      setEventListeners (formElement, inputSelector, buttonSelector);
+      setEventListeners (formElement, config);
     })
   };  
   
-  enableValidation({
-    formSelector: '.form',
-    inputSelector: '.form__info',
-    buttonSelector: '.form__button-save',
-  });
-
-  const config = {
-    formSelector: '.form',
-    inputSelector: '.form__info',
-    buttonSelector: '.form__button-save',
-    inactiveButtonClass: 'form__button-save_inactive',
-    inputErrorClass: 'form__info_type_error',
-    errorClass: 'form__input-error_active'
-  };
+  enableValidation(config);
