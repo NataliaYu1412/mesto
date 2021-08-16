@@ -133,7 +133,7 @@ function saveAddPopupChanges (submit) {
   closeAddPopup();
 };
 
-/* Открывание и закрывания попапа добавления карточки */
+/* Открывание и закрываниe попапа добавления карточки */
 
 const addPopup = document.querySelector('.popup_type_new-card');
 const profileAddButton = document.querySelector('.profile__add-button');
