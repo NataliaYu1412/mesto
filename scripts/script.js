@@ -1,5 +1,5 @@
 import { Card } from './Card.js';
-import { config } from './FormValidator.js';
+import { config, FormValidator} from './FormValidator.js';
 
 /* Общие функции для открытия и закрытия попапов */
 
@@ -35,10 +35,6 @@ function openEditPopup () {
 
   openPopup(editPopup);
 
-  const inputList = Array.from(document.querySelectorAll('.form__info'))
-  const buttonElement = document.querySelector('.form__button-save_type_edit-profile')
-  
-  toggleButtonState(inputList, buttonElement, config);
 }
 
 function closeEditPopup () {
