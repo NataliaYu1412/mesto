@@ -1,5 +1,5 @@
 const cardsContainer = document.querySelector('.elements');
-const imagePopup = document.querySelector('popup_type_image');
+const imagePopup = document.querySelector('.popup_type_image');
 
 export class Card {
     _name;
@@ -83,6 +83,6 @@ export class Card {
     }
 
     _openPopup(popup) {
-        popup.classList.add('.popup-opened');
+        popup.classList.add('popup-opened');
     }
 }

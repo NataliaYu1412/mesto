@@ -46,11 +46,10 @@ card6.init();
 
 /* Активация валидации для каждой формы */
 
-const formList = Array.from(document.querySelectorAll(config.formSelector));
+const forma1 = document.querySelector('.form_type_edit-profile');
+const form1 = new FormValidator(config, forma1);
+form1.enableValidation();
 
-formList.forEach((formElement) => {
-  const validationTurnedOn = new FormValidator(config, formElement);
-
-  validationTurnedOn.enableValidation();
-
-})
+export const forma2 = document.querySelector('.form_type_new-card');
+const form2 = new FormValidator(config, forma2);
+form2.enableValidation();

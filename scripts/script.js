@@ -89,10 +89,8 @@ function openAddPopup () {
   
   addForm.reset();
 
-  const inputList = Array.from(document.querySelectorAll('.form__info'))
-  const buttonElement = document.querySelector('.form__button-save_type_new-card')
-  
-  toggleButtonState(inputList, buttonElement, config);
+  const forma = new FormValidator(config, addForm);
+  forma._toggleButtonState();
 
 }
 
