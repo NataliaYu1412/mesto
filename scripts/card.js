@@ -1,4 +1,3 @@
-const cardsContainer = document.querySelector('.elements');
 const imagePopup = document.querySelector('.popup_type_image');
 const imagePopupPhoto = imagePopup.querySelector('.popup__image');
 const imagePopupName = imagePopup.querySelector('.popup__text');
@@ -8,33 +7,20 @@ export class Card {
     _src;
     _templateSelector;
     _card;
+    _openPopup;
 
-    constructor(templateSelector, data) {
+    constructor(templateSelector, data, openPopup) {
         this._name = data.name;
         this._src = data.link;
         this._templateSelector = templateSelector;
+        this._openPopup = openPopup;
     }
 
-    init(isAddtoBegin = true) {
+    createElement() {
         this._card = this._createCardElement();
-        if (isAddtoBegin) {
-            this._appendCardToContainer();
-        } else {
-            this._prependCardToContainer();
-        }
         this._addEventListeners();
-    }
 
-    /* Добавляет карточку в начало контейнера */
-
-    _appendCardToContainer() {
-        cardsContainer.append(this._card);
-    }
-
-    /* Добавляет карточку в конец контейнера */
-
-    _prependCardToContainer() {
-        cardsContainer.prepend(this._card);
+        return this._card;
     }
 
     /* Добавление новой карточки */ 
@@ -80,9 +66,5 @@ export class Card {
         imagePopupName.textContent = this._name;
         imagePopupPhoto.src = this._src;
         imagePopupPhoto.alt = this._name;    
-    }
-
-    _openPopup(popup) {
-        popup.classList.add('popup-opened');
     }
 }

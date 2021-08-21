@@ -32,18 +32,15 @@ const initialCards = [{
 
 /* Инициализация карточек */
 
-const cardTemplate = document.querySelector('.elements-template');
+const cardsTemplate = document.querySelector('.elements-template');
+const cardsContainer = document.querySelector('.elements');
 
-const [card1, card2, card3, card4, card5, card6] = initialCards.map((card) => {
-    return new Card(cardTemplate, card);
+const [card1, card2, card3, card4, card5, card6] = initialCards.map((initialCard) => {
+  const card = new Card(cardsTemplate, initialCard, openPopup); 
+  return card.createElement();
 });
 
-card1.init();
-card2.init();
-card3.init();
-card4.init();
-card5.init();
-card6.init();
+cardsContainer.append(card1, card2, card3, card4, card5, card6);
 
 /* Активация валидации для каждой формы */
 
@@ -60,10 +57,13 @@ createdFormNewCard.enableValidation();
 function openPopup(popup) {
   popup.classList.add('popup-opened');
   
+  addEventListeners();
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup-opened');
+
+  removeEventListeners()
 }
 
 /* Переменные */
@@ -77,8 +77,6 @@ const profileName = document.querySelector('.profile__name');
 const editPopupName = document.getElementById('edit-popup-name');
 const profileStatus = document.querySelector('.profile__role');
 const editPopupStatus = document.getElementById('edit-popup-status');
-
-addEventListeners();
 
 /* Отпрака формы имени и статуса, отдельные функции для открытия и закрытия первого попапа */
 
@@ -112,7 +110,7 @@ function addEventListeners() {
   document.addEventListener('click', closeByClickOnOverlay);
 }
 
-function removeListeners() {
+function removeEventListeners() {
   document.removeEventListener('keydown', closeByEsc);
   document.removeEventListener('click', closeByClickOnOverlay);
 }
@@ -129,8 +127,8 @@ function saveAddPopupChanges (submit) {
   const name = addPopupName.value;
   const link = addPopupLink.value;
 
-  const newCard = new Card(cardTemplate, {name,link});
-  newCard.init(false);
+  const newCard = new Card(cardsTemplate, {name,link}, openPopup);
+  cardsContainer.prepend(newCard.createElement());
   
   closeAddPopup();
 }
@@ -147,7 +145,7 @@ function openAddPopup () {
   
   addForm.reset();
 
-  newFormNewCard.toggleButtonState;
+  createdFormNewCard.toggleButtonState;
 
 }
 
