@@ -1,5 +1,7 @@
 const cardsContainer = document.querySelector('.elements');
 const imagePopup = document.querySelector('.popup_type_image');
+const imagePopupPhoto = imagePopup.querySelector('.popup__image');
+const imagePopupName = imagePopup.querySelector('.popup__text');
 
 export class Card {
     _name;
@@ -75,9 +77,7 @@ export class Card {
     _handleOpenDetails() {
         this._openPopup(imagePopup);
 
-        const imagePopupPhoto = imagePopup.querySelector('.popup__image');
-
-        imagePopup.querySelector('.popup__text').textContent = this._name;
+        imagePopupName.textContent = this._name;
         imagePopupPhoto.src = this._src;
         imagePopupPhoto.alt = this._name;    
     }

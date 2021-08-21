@@ -60,7 +60,7 @@ export class FormValidator {
         }
     };
 
-    _toggleButtonState() {
+    toggleButtonState() {
         const hasNotValidInput = this._inputList.some(
             inputElement => !inputElement.validity.valid
             );
@@ -79,13 +79,13 @@ export class FormValidator {
             event.preventDefault();
           });
 
-        this._toggleButtonState();
+        this.toggleButtonState();
 
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => { 
             this._checkInputValidity(inputElement);
 
-            this._toggleButtonState();
+            this.toggleButtonState();
             });
         });
     }
