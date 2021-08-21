@@ -16,7 +16,7 @@ export class Card {
         this._openPopup = openPopup;
     }
 
-    createElement() {
+    createCard() {
         this._card = this._createCardElement();
         this._addEventListeners();
 

@@ -37,7 +37,7 @@ const cardsContainer = document.querySelector('.elements');
 
 const [card1, card2, card3, card4, card5, card6] = initialCards.map((initialCard) => {
   const card = new Card(cardsTemplate, initialCard, openPopup); 
-  return card.createElement();
+  return card.createCard();
 });
 
 cardsContainer.append(card1, card2, card3, card4, card5, card6);
@@ -128,7 +128,7 @@ function saveAddPopupChanges (submit) {
   const link = addPopupLink.value;
 
   const newCard = new Card(cardsTemplate, {name,link}, openPopup);
-  cardsContainer.prepend(newCard.createElement());
+  cardsContainer.prepend(newCard.createCard());
   
   closeAddPopup();
 }
@@ -145,7 +145,7 @@ function openAddPopup () {
   
   addForm.reset();
 
-  createdFormNewCard.toggleButtonState;
+  createdFormNewCard.toggleButtonState();
 
 }
 
