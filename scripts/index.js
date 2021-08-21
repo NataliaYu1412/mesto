@@ -1,4 +1,4 @@
-import { Card } from './Card.js';
+import { Card } from './Сard.js';
 import { config, FormValidator} from './FormValidator.js';
 
 /* Массив карточек */
