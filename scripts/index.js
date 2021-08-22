@@ -35,12 +35,14 @@ const initialCards = [{
 const cardsTemplate = document.querySelector('.elements-template');
 const cardsContainer = document.querySelector('.elements');
 
-const [card1, card2, card3, card4, card5, card6] = initialCards.map((initialCard) => {
-  const card = new Card(cardsTemplate, initialCard, openPopup); 
-  return card.createCard();
-});
+function createNewCard (card) {
+  const newCard = new Card(cardsTemplate, card, openPopup);
+  return newCard.createCard();
+}
 
-cardsContainer.append(card1, card2, card3, card4, card5, card6);
+const cards = initialCards.map(createNewCard);
+
+cardsContainer.append(...cards);
 
 /* Активация валидации для каждой формы */
 
@@ -126,9 +128,8 @@ function saveAddPopupChanges (submit) {
   
   const name = addPopupName.value;
   const link = addPopupLink.value;
-
-  const newCard = new Card(cardsTemplate, {name,link}, openPopup);
-  cardsContainer.prepend(newCard.createCard());
+  
+  cardsContainer.prepend(createNewCard({name,link}));
   
   closeAddPopup();
 }
