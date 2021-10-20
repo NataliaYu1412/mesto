@@ -5,6 +5,7 @@ import {Card} from '../components/Сard.js';
 import {config, FormValidator} from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
 
 import arkhyz from '../images/arkhyz.jpg';
 import chelyabinskOblast from '../images/chelyabinsk-oblast.jpg';
@@ -45,6 +46,7 @@ const initialCards = [{
 /* Popup изображений */
 
 const popupWithImage = new PopupWithImage('.popup_type_image');
+popupWithImage.setEventListeners();
 
 /* Инициализация карточек */
 
@@ -60,7 +62,7 @@ const section = new Section({
 section.render()
 
 function createNewCard(card) {
-  const newCard = new Card(cardsTemplate, card, popupWithImage.open);
+  const newCard = new Card(cardsTemplate, card, (src, name) => popupWithImage.open(src,name));
   return newCard.createCard();
 }
 
@@ -77,7 +79,6 @@ createdFormNewCard.enableValidation();
 /* Переменные */
 
 const profileEditButton = document.querySelector('.profile__edit-button');
-
 const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__role');
 const editPopupName = document.getElementById('edit-popup-name');
@@ -85,32 +86,42 @@ const editPopupStatus = document.getElementById('edit-popup-status');
 
 /* Отправка формы имени и статуса, отдельные функции для открытия и закрытия первого попапа */
 
-const editPopupClass = new PopupWithForm('.popup_type_edit-profile', saveEditPopupChanges);
-editPopupClass.setEventListeners();
-
-profileEditButton.addEventListener('click', openEditPopup);
+const userInfo = new UserInfo ({
+  name: profileName,
+  status: profileStatus
+})
 
 function openEditPopup() {
-  editPopupName.value = profileName.textContent;
-  editPopupStatus.value = profileStatus.textContent;
-  editPopupClass.open()
+  const userData = userInfo.getUserInfo()
+  editPopupName.value = userData.name;
+  editPopupStatus.value = userData.status;
+  editPopupForm.open()
 }
 
-function saveEditPopupChanges (name, status) {
-  profileName.textContent = name;
-  profileStatus.textContent = status;
-}
+const editPopupForm = new PopupWithForm({
+  popupSelector: '.popup_type_edit-profile',
+  handleFormSubmit: (formData) => {
+    userInfo.setUserInfo(formData)}
+  });
+
+editPopupForm.setEventListeners();
+
+profileEditButton.addEventListener('click', openEditPopup);
 
 /* Открывание и закрываниe попапа добавления карточки */
 
 const profileAddButton = document.querySelector('.profile__add-button');
 
-const addPopupClass = new PopupWithForm('.popup_type_new-card', saveAddPopupChanges);
-addPopupClass.setEventListeners();
+const addPopupForm = new PopupWithForm({
+  popupSelector: '.popup_type_new-card', 
+  handleFormSubmit: saveAddPopupChanges
+  });
+addPopupForm.setEventListeners();
 
-profileAddButton.addEventListener('click', () => addPopupClass.open());
+profileAddButton.addEventListener('click', () => addPopupForm.open());
 createdFormNewCard.toggleButtonState();
 
-function saveAddPopupChanges(name, link) {
-  cardsContainer.prepend(createNewCard({name, link}));
+function saveAddPopupChanges({formName, formLink}) {
+  cardsContainer.prepend(createNewCard({name: formName, link: formLink}));
 }
+
