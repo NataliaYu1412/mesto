@@ -1,3 +1,14 @@
+import cardsTemplate from '../utils/components.js';
+import cardsContainer from '../utils/components.js';
+import formEditProfile from '../utils/components.js';
+import formNewCard from '../utils/components.js';
+import profileEditButton from '../utils/components.js';
+import profileName from '../utils/components.js';
+import profileStatus from '../utils/components.js';
+import editPopupName from '../utils/components.js';
+import editPopupStatus from '../utils/components.js';
+import profileAddButton from '../utils/components.js';
+
 import './index.css';
 
 import Section from '../components/Section.js';
@@ -50,8 +61,6 @@ popupWithImage.setEventListeners();
 
 /* Инициализация карточек */
 
-const cardsTemplate = document.querySelector('.elements-template');
-const cardsContainer = document.querySelector('.elements');
 const section = new Section({
   items: initialCards,
   renderer: (card) => {
@@ -68,21 +77,11 @@ function createNewCard(card) {
 
 /* Активация валидации для каждой формы */
 
-const formEditProfile = document.querySelector('.form_type_edit-profile');
 const cratedFormEditProfile = new FormValidator(config, formEditProfile);
 cratedFormEditProfile.enableValidation();
 
-export const formNewCard = document.querySelector('.form_type_new-card');
 const createdFormNewCard = new FormValidator(config, formNewCard);
 createdFormNewCard.enableValidation();
-
-/* Переменные */
-
-const profileEditButton = document.querySelector('.profile__edit-button');
-const profileName = document.querySelector('.profile__name');
-const profileStatus = document.querySelector('.profile__role');
-const editPopupName = document.getElementById('edit-popup-name');
-const editPopupStatus = document.getElementById('edit-popup-status');
 
 /* Отправка формы имени и статуса, отдельные функции для открытия и закрытия первого попапа */
 
@@ -110,16 +109,13 @@ profileEditButton.addEventListener('click', openEditPopup);
 
 /* Открывание и закрываниe попапа добавления карточки */
 
-const profileAddButton = document.querySelector('.profile__add-button');
-
 const addPopupForm = new PopupWithForm({
   popupSelector: '.popup_type_new-card', 
   handleFormSubmit: saveAddPopupChanges
   });
 addPopupForm.setEventListeners();
 
-profileAddButton.addEventListener('click', () => addPopupForm.open());
-createdFormNewCard.toggleButtonState();
+profileAddButton.addEventListener('click', () => addPopupForm.open(), createdFormNewCard.toggleButtonState());
 
 function saveAddPopupChanges({formName, formLink}) {
   cardsContainer.prepend(createNewCard({name: formName, link: formLink}));

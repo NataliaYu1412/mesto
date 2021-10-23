@@ -1,5 +1,3 @@
-const imagePopup = document.querySelector('.popup_type_image');
-
 export class Card {
     _name;
     _src;
