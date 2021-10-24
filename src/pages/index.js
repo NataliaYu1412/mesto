@@ -1,13 +1,13 @@
-import cardsTemplate from '../utils/components.js';
-import cardsContainer from '../utils/components.js';
-import formEditProfile from '../utils/components.js';
-import formNewCard from '../utils/components.js';
-import profileEditButton from '../utils/components.js';
-import profileName from '../utils/components.js';
-import profileStatus from '../utils/components.js';
-import editPopupName from '../utils/components.js';
-import editPopupStatus from '../utils/components.js';
-import profileAddButton from '../utils/components.js';
+import {cardsTemplate} from '../utils/components.js';
+import {cardsContainer} from '../utils/components.js';
+import {formEditProfile} from '../utils/components.js';
+import {formNewCard} from '../utils/components.js';
+import {profileEditButton} from '../utils/components.js';
+import {profileName} from '../utils/components.js';
+import {profileStatus} from '../utils/components.js';
+import {editPopupName} from '../utils/components.js';
+import {editPopupStatus} from '../utils/components.js';
+import {profileAddButton} from '../utils/components.js';
 
 import './index.css';
 
