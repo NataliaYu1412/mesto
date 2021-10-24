@@ -8,6 +8,7 @@ import {profileStatus} from '../utils/components.js';
 import {editPopupName} from '../utils/components.js';
 import {editPopupStatus} from '../utils/components.js';
 import {profileAddButton} from '../utils/components.js';
+import {initialCards} from '../utils/components.js';
 
 import './index.css';
 
@@ -17,42 +18,6 @@ import {config, FormValidator} from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
-
-import arkhyz from '../images/arkhyz.jpg';
-import chelyabinskOblast from '../images/chelyabinsk-oblast.jpg';
-import ivanovo from '../images/ivanovo.jpg'
-import kamchatka from '../images/kamchatka.jpg'
-import kholmogorskyRayon from '../images/kholmogorsky-rayon.jpg'
-import baikal from '../images/baikal.jpg'
-
-
-/* Массив карточек */
-
-const initialCards = [{
-    name: 'Архыз',
-    link: arkhyz
-},
-  {
-    name: 'Челябинская область',
-    link: chelyabinskOblast
-  },
-  {
-    name: 'Иваново',
-    link: ivanovo
-  },
-  {
-    name: 'Камчатка',
-    link: kamchatka
-  },
-  {
-    name: 'Холмогорский район',
-    link: kholmogorskyRayon
-  },
-  {
-    name: 'Байкал',
-    link: baikal
-  }
-];
 
 /* Popup изображений */
 
@@ -115,9 +80,12 @@ const addPopupForm = new PopupWithForm({
   });
 addPopupForm.setEventListeners();
 
-profileAddButton.addEventListener('click', () => addPopupForm.open(), createdFormNewCard.toggleButtonState());
+profileAddButton.addEventListener('click', () => {
+  addPopupForm.open()
+  createdFormNewCard.toggleButtonState()
+});
 
-function saveAddPopupChanges({formName, formLink}) {
-  cardsContainer.prepend(createNewCard({name: formName, link: formLink}));
+function saveAddPopupChanges({addFormName, addFormLink}) {
+  cardsContainer.prepend(createNewCard({name: addFormName, link: addFormLink}));
 }
 
