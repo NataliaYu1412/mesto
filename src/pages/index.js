@@ -18,6 +18,30 @@ import {config, FormValidator} from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
+
+/* Работа с Api */
+
+const api = new Api ({
+  url: "https://mesto.nomoreparties.co/v1/cohort-29/cards/",
+  headers: {
+    "Content-type": 'application/json',
+    authorization: 'd0c1307e-6920-4db6-8646-78b2e72902b6',
+  }
+});
+
+const cards = api.getAllCards();
+cards.then((data) => {
+    const section = new Section({
+      items: data,
+      renderer: (card) => {
+        const newCard = createNewCard(card);
+        cardsContainer.append(newCard);
+      }
+    }, '.elements');
+    section.render()
+  })
+  .catch((err) => alert(err));
 
 /* Popup изображений */
 
@@ -26,14 +50,14 @@ popupWithImage.setEventListeners();
 
 /* Инициализация карточек */
 
-const section = new Section({
+/* const section = new Section({
   items: initialCards,
   renderer: (card) => {
     const newCard = createNewCard(card);
     cardsContainer.append(newCard);
   }
 }, '.elements');
-section.render()
+section.render() */
 
 function createNewCard(card) {
   const newCard = new Card(cardsTemplate, card, (src, name) => popupWithImage.open(src,name));
