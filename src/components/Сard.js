@@ -1,14 +1,22 @@
+import Api from './Api';
+
 export class Card {
     _name;
     _src;
+    _id;
+    _likes;
     _templateSelector;
     _card;
 
-    constructor(templateSelector, data, handleCardClick) {
+    constructor(data, templateSelector) {
         this._name = data.name;
         this._src = data.link;
+        this._id = data.id;
+        this._likes = data.likes;
         this._templateSelector = templateSelector;
-        this._handleCardClick = handleCardClick;
+        this._handleCardClick = data.handleCardClick;
+        this._handleDeleteClick = data.handleDeleteClick;
+        this._handleLikeClick = data.handleLikeClick;
     }
 
     createCard() {
@@ -16,6 +24,9 @@ export class Card {
         this._addEventListeners();
 
         return this._card;
+    }
+    updateLikeInfo(likeCount) {
+        // selector.setText(likeCount);
     }
 
     /* Добавление новой карточки */
@@ -41,7 +52,7 @@ export class Card {
 
     /* Удаление карточки */
     _handleDelete() {
-        this._card.remove();
+        this._handleDeleteClick(this._id).then(() => this._card.remove());
     }
 
     /* Обработка клика по лайку */

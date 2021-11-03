@@ -12,6 +12,7 @@
     font-weight: 400;
     color: white;
     cursor: pointer;
+    padding: 0;
 }
 
 .form__button-save:hover {
